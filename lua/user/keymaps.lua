@@ -22,6 +22,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- Adds edit from current directory. Really handy when you are editing some file in a subdirectory
+-- and then you know that the file you want to edit is in the same directory (compared to :e which stars
+-- from root)
 keymap("n", "<leader>e", ":e <C-R>=expand('%:p:h') . '/' <CR>",opts)
 
 -- Resize with arrows

@@ -39,3 +39,49 @@ vim.opt.fillchars.eob=" "                       -- show empty lines at the end o
 vim.opt.shortmess:append "c"                    -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
 vim.opt.whichwrap:append("<,>,[,],h,l")         -- keys allowed to move to the previous/next line when the beginning/end of line is reached
 vim.opt.iskeyword:append("-")                   -- treats words with `-` as single words
+
+vim.opt.colorcolumn = "80"
+
+local api = vim.api
+-- Highlight on yank
+local yankGrp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+api.nvim_create_autocmd("TextYankPost", {
+  group = yankGrp,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  desc = "Highlight yank",
+})
+
+
+-- show cursor line only in active window
+local cursorGrp = api.nvim_create_augroup("CursorLine", { clear = true })
+api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, { pattern = "*", command = "set cursorline", group = cursorGrp })
+api.nvim_create_autocmd(
+  { "InsertEnter", "WinLeave" },
+  { pattern = "*", command = "set nocursorline", group = cursorGrp }
+)
+
+-- show cursor col line only in active window
+--local cursorColGrp = api.nvim_create_augroup("CursorColumn", { clear = true })
+--api.nvim_create_autocmd(
+  --{ "InsertLeave", "WinEnter" },
+  --{ pattern = "*", command = "set cursorcolumn", group = cursorColGrp }
+--)
+--api.nvim_create_autocmd(
+  --{ "InsertEnter", "WinLeave" },
+  --{ pattern = "*", command = "set nocursorcolumn", group = cursorColGrp }
+--)
+
+-- show Blank Line only in active window
+local blanklineGrp = api.nvim_create_augroup("BlankLine", { clear = true })
+api.nvim_create_autocmd(
+  { "InsertLeave", "WinEnter" },
+  { pattern = "*", command = ":IndentBlanklineEnable", group = blanklineGrp }
+)
+api.nvim_create_autocmd(
+  { "InsertEnter", "WinLeave" },
+  { pattern = "*", command = ":IndentBlanklineDisable", group = blanklineGrp }
+)
+

@@ -44,7 +44,7 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
 -- Better paste
-keymap("v", "p", '"_dP', opts)
+--keymap("v", "p", '"_dP', opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -58,7 +58,7 @@ keymap("v", ">", ">gv", opts)
 -- Plugins --
 
 -- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>ee", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
@@ -67,6 +67,7 @@ keymap("n", "<leader>p", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>b", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>p", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader><leader>", ":Telescope  frecency<CR>", {noremap = true, silent = true})
+
 
 
 

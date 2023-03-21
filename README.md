@@ -93,7 +93,16 @@ We will also need `ripgrep` for Telescope to work:
 
 I recommend using the following repo to get a "Nerd Font" (Font that supports icons)
 
+Check the available fonts from here: https://www.nerdfonts.com/font-downloads
+
+If you are using console, then just change your console (eg. iTerm) font to a nerd font.
+I use a font called "Hack".
+
 [getnf](https://github.com/ronniedroid/getnf)
+
+After installing getnf, launch it: ./getnf and download the font you want.
+
+
 
 ## Configuration
 
